@@ -20,15 +20,17 @@ typedef struct stack{
     int size, top;
     int *arr;
 }stack;
-/* isEmpty deduce whether stack is empty or not
- * parameter ptr, The stack's 
+/* isEmpty deduce whether stack is empty or not.
+ * 
+ * PARAM: @ptr, the stack's address
  */
 int isEmpty(stack *ptr){
     if(ptr->top == -1) return 1;
     return 0;
 }
-/* isFull deduce whether stack is full or not
- * parameter ptr, The stack's address
+/* isFull deduce whether stack is full or not.
+ * 
+ * PARAM: @ptr, the stack's address
  */
 int isFull(stack *ptr){
     if(ptr->top == ptr->size-1) return 1;
@@ -36,7 +38,9 @@ int isFull(stack *ptr){
 }
 /* stktrav traverse through the whole stack
  * if the stack is not empty, if the stack
- * is empty then it will raise an error
+ * is empty then it will raise an error.
+ * 
+ * PARAM: @ptr, the stack's address
  */
 void stktrav(stack *ptr){
     if(isEmpty(ptr)) printf("[!] Stack is Empty!");
@@ -47,7 +51,10 @@ void stktrav(stack *ptr){
 }
 /* push inserts new elements into the stack
  * from the top of the stack, following the
- * LIFO sequence
+ * LIFO sequence.
+ * 
+ * PARAM: @ptr, the stack's address
+ * PARAM: @data, the elements value that will be inserted
  */
 void push(stack *ptr, int data){
     if(isFull(ptr)) printf("[!] Stack Overflow!");
@@ -59,6 +66,8 @@ void push(stack *ptr, int data){
 /* pop deletes the top most node and returns
  * its contents aka the element, following the
  * LIFO sequence
+ * 
+ * PARAM: @ptr, the stack's address
  */ 
 int pop(stack *ptr){
     if(isEmpty(ptr)){
@@ -68,7 +77,13 @@ int pop(stack *ptr){
     ptr->top--;
     return ptr->arr[ptr->top+1];
 }
-//peek returns the certain position's contents
+/* peek returns a certain positioned element's
+ * value(assuming that first element's index is 01).
+ * if the given position/index doesn't exist, returns 0.
+ * 
+ * PARAM: @ptr, the stack's address
+ * PARAM: @pos, the position/index of the element
+ */
 int peek(stack *ptr, int pos){
     if(ptr->top-pos+1 < 0){
         //printf("[!] Given position doesn't exist/hold any Value!");
@@ -78,7 +93,9 @@ int peek(stack *ptr, int pos){
 }
 /* stackTop returns the top most element of the 
  * stack, and there's no element aka the stack 
- * itself is empty it will return NULL and a error 
+ * itself is empty it will return 0 and an error.
+ * 
+ * PARAM: @ptr, the stack's address 
  */
 int stackTop(stack *ptr){
     if(isEmpty(ptr)){ 
@@ -90,7 +107,9 @@ int stackTop(stack *ptr){
 /* stackBottom returns the bottom most 
  * element of the stack, and there's no bottom
  * element aka the stack itself is empty it will
- * return NULL and a error 
+ * return 0 and an error 
+ * 
+ * PARAM: @ptr, the stack's address
  */
 int stackBottom(stack *ptr){
     if(isEmpty(ptr)){ 
