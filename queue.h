@@ -33,7 +33,7 @@ int isEmpty(queue *ptr){
  * PARAM: @ptr, the queue's address
  */
 int isFull(queue *ptr){
-    if(ptr->f == ptr->size-1) return 1;
+    if(ptr->b == ptr->size-1) return 1;
     return 0;
 }
 /* queueTrav (abbrevaition for Queue Traversal)
