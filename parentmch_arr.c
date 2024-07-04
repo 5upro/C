@@ -25,6 +25,7 @@ int isEmpty(stack *ptr){
  * LIFO sequence.
  * 
  * PARAM: @ptr, the stack's address
+ * PARAM: @data, the elements value that will be inserted
  */
 void push(stack *ptr, char data){
     ptr->top++;
