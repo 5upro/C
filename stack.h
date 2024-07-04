@@ -3,9 +3,9 @@
 
 /* Stack is a ADT, which can be implimented
  * using arrays or linked lists.
- * the stack ADT follows the LIFO/FILO sequence
- * LIFO: Last In First Out
- * FILO: First In Last Out
+ * the stack ADT follows the LIFO/FILO sequence.
+ * LIFO: Last In First Out.
+ * FILO: First In Last Out.
  * 
  * this header file contains all the basic
  * operations/functions required to initialize,
