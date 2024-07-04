@@ -3,8 +3,9 @@
 
 /* Stack is a ADT, which can be implimented
  * using arrays or linked lists.
- * the stack ADT follows the LIFO sequence
+ * the stack ADT follows the LIFO/FILO sequence
  * LIFO: Last In First Out
+ * FILO: First In Last Out
  * 
  * this header file contains all the basic
  * operations/functions required to initialize,
@@ -20,7 +21,8 @@ typedef struct stack{
     int size, top;
     int *arr;
 }stack;
-/* isEmpty deduce whether stack is empty or not.
+/* isEmpty deduce whether the stack is empty 
+ * or not.
  * 
  * PARAM: @ptr, the stack's address
  */
@@ -28,7 +30,8 @@ int isEmpty(stack *ptr){
     if(ptr->top == -1) return 1;
     return 0;
 }
-/* isFull deduce whether stack is full or not.
+/* isFull deduce whether the stack is full 
+ * or not.
  * 
  * PARAM: @ptr, the stack's address
  */
@@ -65,10 +68,10 @@ void push(stack *ptr, int data){
 }
 /* pop deletes the top most node and returns
  * its contents aka the element, following the
- * LIFO sequence
+ * LIFO sequence.
  * 
  * PARAM: @ptr, the stack's address
- */ 
+ */  
 int pop(stack *ptr){
     if(isEmpty(ptr)){
         //printf("[!] Stack is Empty!");
@@ -77,12 +80,10 @@ int pop(stack *ptr){
     ptr->top--;
     return ptr->arr[ptr->top+1];
 }
-/* peek returns a certain positioned element's
- * value(assuming that first element's index is 01).
- * if the given position/index doesn't exist, returns 0.
+/* peek returns the certain position's contents.
  * 
  * PARAM: @ptr, the stack's address
- * PARAM: @pos, the position/index of the element
+ * PARAM: @pos, the position/index of the node 
  */
 int peek(stack *ptr, int pos){
     if(ptr->top-pos+1 < 0){
@@ -93,9 +94,9 @@ int peek(stack *ptr, int pos){
 }
 /* stackTop returns the top most element of the 
  * stack, and there's no element aka the stack 
- * itself is empty it will return 0 and an error.
+ * itself is empty it will return 0 and a error. 
  * 
- * PARAM: @ptr, the stack's address 
+ * PARAM: @ptr, the stack's address
  */
 int stackTop(stack *ptr){
     if(isEmpty(ptr)){ 
@@ -107,7 +108,7 @@ int stackTop(stack *ptr){
 /* stackBottom returns the bottom most 
  * element of the stack, and there's no bottom
  * element aka the stack itself is empty it will
- * return 0 and an error 
+ * return 0 and a error.
  * 
  * PARAM: @ptr, the stack's address
  */
