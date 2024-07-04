@@ -3,8 +3,8 @@
 
 /* Stack is a ADT, which can be implimented
  * using arrays or linked lists.
- * the stack ADT follows the LIFO sequence
- * LIFO: Last In First Out
+ * the stack ADT follows the LIFO sequence.
+ * LIFO: Last In First Out.
  * 
  * this header file contains all the basic
  * operations/functions required to initialize,
@@ -23,17 +23,17 @@ typedef struct node{
     struct node* next;
 }node;
 #endif
-/* isEmpty deduce whether stack is empty or not
- * parameter tp, The stack's top most node's
- * address  
+/* isEmpty deduce whether stack is empty or not.
+ * 
+ * PARAM: @tp, the stack's top most node's address 
  */
 int isEmpty(node *tp){
     if(tp==NULL) return 1;
     return 0;
 }
-/* isFull deduce whether stack is Full or not
- * parameter tp, The stack's top most node's
- * address 
+/* isFull deduce whether stack is Full or not.
+ * 
+ * PARAM: @tp, the stack's top most node's address 
  */
 int isFull(node *tp){
     node *nw = (node*)malloc(sizeof(node));
@@ -42,7 +42,9 @@ int isFull(node *tp){
 }
 /* stacktrav traverse through the stack
  * if the stack is not empty, if the stack
- * is empty then it will raise an error
+ * is empty then it will raise an error.
+ * 
+ * PARAM: @tp, the stack's top most node's address
  */
 void stacktrav(node *tp){
     node *ptr = tp;
@@ -57,7 +59,11 @@ void stacktrav(node *tp){
         printf("\n");
     }
 }
-//peek returns the certain position's contents
+/* peek returns the certain position's contents.
+ * 
+ * PARAM: @tp, the stack's top most node's address
+ * PARAM: @index, the position/index of the node 
+ */
 int peek(node *tp, int index){
     if(isEmpty(tp)){
         printf("[!]Stack Underflow!\n");
@@ -71,11 +77,15 @@ int peek(node *tp, int index){
             return ptr->data;
         }
     }
-    return NULL;
+    return 0;
 }
 /* push inserts new elements into the stack
  * from the top of the stack, following the
- * LIFO sequence
+ * LIFO sequence.
+ * 
+ * PARAM: @ptr, the (main's) local variable's address
+ * where the stack's top most node's address is stored
+ * PARAM: @data, the elements value that will be inserted
  */ 
 void push(node **tp, int data){
     if(isFull(*tp)){
@@ -90,7 +100,10 @@ void push(node **tp, int data){
 }
 /* pop deletes the top most node and returns
  * its contents aka the element, following the
- * LIFO sequence
+ * LIFO sequence.
+ * 
+ * PARAM: @ptr, the (main's) local variable's address
+ * where the stack's top most node's address is stored
  */ 
 int pop(node **tp){
     if(isEmpty(*tp)){
@@ -107,12 +120,14 @@ int pop(node **tp){
 /* stackBottom returns the bottom most 
  * element of the stack, and there's no bottom
  * element aka the stack itself is empty it will
- * return NULL and a error 
+ * return 0 and a error.
+ * 
+ * PARAM: @ptr, the stack's top most node's address
  */
 int stackBottom(node *tp){
     if(isEmpty(tp)){
         printf("[!]Stack Underflow!\n");
-        return NULL;
+        return 0;
     }
     node* ptr = tp;
     while(ptr->next!=NULL){
@@ -122,12 +137,14 @@ int stackBottom(node *tp){
 }
 /* stackTop returns the top most element of the 
  * stack, and there's no element aka the stack 
- * itself is empty it will return NULL and a error 
+ * itself is empty it will return 0 and a error. 
+ * 
+ * PARAM: @ptr, the stack's top most node's address
  */
 int stackTop(node *tp){
     if(isEmpty(tp)){
         printf("[!]Stack Underflow!\n");
-        return NULL;
+        return 0;
     } 
     return tp->data;
 }
