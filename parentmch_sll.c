@@ -1,9 +1,10 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
-/* this piece of program demonstrates how can stacks
- * be used to check whether a expression's parentheses
- * are is in balanced order or not.
+/* this piece of program demonstrates how singly 
+ * linked list implimented stacks can be used to 
+ * check whether a expression's parentheses are 
+ * in a balanced order or not.
  */
 //definition of the node/Stack ADT 
 typedef struct node{
@@ -103,7 +104,6 @@ int multipren(char *buff){
 }
 int main(){
     char buff[1000];
-    int flag=1;
     
     printf("Enter Any Expression: ");
     fgets(buff, 1000, stdin);
