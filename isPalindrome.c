@@ -1,7 +1,18 @@
 #include "stdio.h"
 #include "math.h"
-#include "stdbool.h"
-
+/* isPalin checks whether a integer is a palindrome
+ * or not. if it is isPalin returns 1, otherwise
+ * isPalin returns 0.
+ * 
+ * first, isPalin compares the first digit of the 
+ * integer with the last digit of the integer, if it's
+ * same it moves on to the next digit (i.e. second digit
+ * and second last digit of the integer) and so on. if
+ * it encounters an mismatched digit it returns 0, 
+ * otherwise if every mirroring digit is equal it returns 1. 
+ * 
+ * PARAM: @x, the integer value to be checked 
+ */
 int isPalin(int x) {
     if(!(x<0)){
         int dig = log10(x);
