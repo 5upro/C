@@ -16,7 +16,7 @@
  */
 //definition of queue ADT 
 typedef struct{
-    int size, b, f, *arr;
+    int size, r, f, *arr;
 }queue;
 /* isEmpty deduces whether the queue is empty 
  * or not.
@@ -24,7 +24,7 @@ typedef struct{
  * PARAM: @ptr, the queue's address
  */
 int isEmpty(queue *ptr){
-    if(ptr->b == ptr->f) return 1;
+    if(ptr->r == ptr->f) return 1;
     return 0;
 }
 /* isFull deduces whether the queue is full 
@@ -33,7 +33,7 @@ int isEmpty(queue *ptr){
  * PARAM: @ptr, the queue's address
  */
 int isFull(queue *ptr){
-    if((ptr->b+1)%ptr->size == ptr->f) return 1;
+    if((ptr->r+1)%ptr->size == ptr->f) return 1;
     return 0;
 }
 /* queueTrav (abbrevaition for Queue Traversal)
@@ -42,10 +42,10 @@ int isFull(queue *ptr){
  * 
  * PARAM: @ptr, the queue's address
  */
-void queueTrav(queue *ptr){
+void cyqTrav(queue *ptr){
     if(!isEmpty(ptr)){
         int i = (ptr->f+1)%ptr->size;
-        while(i!=(ptr->b+1)%ptr->size){
+        while(i!=(ptr->r+1)%ptr->size){
             printf("%d ", ptr->arr[i]);
             i = (i+1)%ptr->size;        
         }
@@ -63,8 +63,8 @@ void queueTrav(queue *ptr){
  */
 void enqueue(queue *ptr, int data){
     if(!isFull(ptr)){
-        ptr->b = (ptr->b+1)%ptr->size;
-        ptr->arr[ptr->b] = data;
+        ptr->r = (ptr->r+1)%ptr->size;
+        ptr->arr[ptr->r] = data;
     }
     else{
         printf("Queue Overflow!\n");
@@ -109,7 +109,7 @@ int firstVal(queue *ptr){
  * PARAM: @ptr, the queue's address
  */
 int lastVal(queue *ptr){
-    if(!isEmpty(ptr)) return ptr->arr[ptr->b];
+    if(!isEmpty(ptr)) return ptr->arr[ptr->r];
     return 0;
 }
 #endif
