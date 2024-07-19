@@ -12,7 +12,7 @@ int binsrc_recur(int *arr, int high, int sval){
         else if(arr[mid]>sval){
             return binsrc_recur(arr, mid-1, sval);
         }
-        else if(arr[mid]==sval){
+        else{
             low = 0;
             return mid;
         }
