@@ -8,7 +8,8 @@ typedef struct node{
     struct node* next;
 }node;
 #endif
-
+/* 
+ */
 int isEmpty(node *ptr){
     if(ptr==NULL) return 1;
     return 0;
