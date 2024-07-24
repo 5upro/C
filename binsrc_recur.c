@@ -30,11 +30,11 @@ int main(){
     }
     
     for(int i=0; i<18; i++){
-        printf("%d ", binsrc_recur(arr, n, arr[i]));
+        printf("%d ", binsrc_recur(arr, n-1, arr[i]));
     }printf("\n");
 
     for(int i=0; i<18; i++){
-        printf("%d ", binsrc_recur(arr, n, arr[i]));
+        printf("%d ", binsrc_recur(arr, n-1, arr[i]));
     }printf("\n");
     
     return 0;

@@ -3,6 +3,7 @@
 
 int binsrc_ite(int *arr, int high, int sval){
    int low = 0, mid;
+   high--;
    while(low<=high){
        mid = (low+high)/2;
        if(arr[mid]<sval){
