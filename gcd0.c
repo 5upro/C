@@ -1,18 +1,19 @@
 #include "stdio.h"
 #include "math.h"
 #include "stdlib.h"
-#include "time.h"
+#include "unistd.h"
 #define cls() system("cls")
-/*void slp (unsigned int secs) {
-    unsigned int retTime = time(0) + secs;   // Get finishing time.
-    while (time(0) < retTime);               // Loop until it arrives.
-}*/
-void delay(int sec){
-    int ms = 1000 * sec;
-    clock_t start_time = clock();
-    while(clock()<start_time+ms);
+
+void endscr(){
+    printf("\n\t\t\t\033[1;91mTERMINATING!\033[0m");
+    sleep(1);
+    cls();
 }
 
+void fmsg(){
+    puts("\033[1;91m\n\t   @@@@@@@@         @@@@@@       @@@@@@@     \n\t  @@      @@       @@    @@      @@    @@    \n\t @@               @@             @@     @@   \n\t @@               @@             @@     @@   \n\t @@    @@@@@      @@             @@     @@   \n\t  @@      @@  @@   @@    @@  @@  @@    @@  @@\n\t   @@@@@@@@   @@    @@@@@@   @@  @@@@@@@   @@ \n\033[0m");
+        
+}
 
 int main(int argc, char *argv []){
     char en, col[5][10]={"\033[0m","\033[1;91m","\033[1;92m","\033[1;49;34m","\033["};
@@ -20,14 +21,13 @@ int main(int argc, char *argv []){
     while(1){
         int *p, *h, *c;
         int n, s, ts, fi=1, sq, j=0, div=2;
-
-        printf("%s\n\t   @@@@@@@@         @@@@@@       @@@@@@@     \n\t  @@      @@       @@    @@      @@    @@    \n\t @@               @@             @@     @@   \n\t @@               @@             @@     @@   \n\t @@    @@@@@      @@             @@     @@   \n\t  @@      @@  @@   @@    @@  @@  @@    @@  @@\n\t   @@@@@@@@   @@    @@@@@@   @@  @@@@@@@   @@ \n%s%s\n[+] Number of Operands >%s ", col[1], col[0], col[3], col[0]);
+        
+        fmsg();
+        printf("\033[1;49;34m\n[+] Number of Operands >%s ", col[0]);
         scanf("%d",&n);
         fflush(stdin);
         if (n==0){
-            printf("\n\t\t\t%sTERMINATING!%s", col[1], col[0]);
-            delay(1);
-            cls();
+            endscr();
             break;
         }
         else{
@@ -41,7 +41,8 @@ int main(int argc, char *argv []){
                 printf("1.\n");
             }*/
             cls();
-            printf("[+]Enter the Operands Separeted by Spaces!\n e.g. x y z\n> ");
+            fmsg();
+            printf("\033[1;49;34m\n[+]Enter the Operands Separeted by Spaces!\n e.g. x y z\n>%s ", col[0]);
             for(int i=0; i<n; ++i){
                 scanf("%d",&p[i]);
             }
@@ -125,14 +126,16 @@ int main(int argc, char *argv []){
             en = getchar();
             
             if(en=='0'){
+                endscr();
                 break;
             }
             if (en==0x0A){
+                cls();
                 continue;
             }
             else{
                 printf("invalid input\n");
-                delay(1);
+                sleep(1);
                 en = getchar();
                 cls();
                 continue;
