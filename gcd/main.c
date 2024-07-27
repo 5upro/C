@@ -2,32 +2,39 @@
 #include "stdlib.h"
 #include "string.h"
 #include "math.h"
+#include "ctype.h"
 #include "unistd.h"
 #include "gcdui.h"
 #include "gcdprocess.h"
 
 int main(){
-    cls();
+    wlcmscr();
+    int *arr, len;
+    char buf[1024];
     while(1){
-        fmsg();
-        int *arr, len;
-        char buf[1024];
-        fflush(stdin);
-        fgets(buf, 1024, stdin);
-        
-        int val = strcmp(buf, "exit"); 
-        if(val==1){
+        fscr();
+        input(buf, 1024);
+    
+        if(options(buf)==0){
             endscr();
             break;
         }
-        else{
-            arr = strToarr(buf, &len);
-            for(int i=0; i<len; i++){
-                printf("%d ",arr[i]);
+        else if(options(buf)==1){
+            int retVal = gcd();
+            if(retVal==-1){
+                endscr();
+                break;
             }
-            //fflush(stdin);
-            //fgets(buf, 1024, stdin);
-            sleep(1);
+        }
+        else if(options(buf)==2){
+            int retVal = lcm();
+            if(retVal==-1){
+                endscr();
+                break;
+            }
+        }
+        else{
+            inverr();
         }
     }
     return 0;
