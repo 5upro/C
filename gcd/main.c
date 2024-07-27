@@ -20,14 +20,14 @@ int main(){
             break;
         }
         else if(options(buf)==1){
-            int retVal = gcd();
+            int retVal = gcdMenu();
             if(retVal==-1){
                 endscr();
                 break;
             }
         }
         else if(options(buf)==2){
-            int retVal = lcm();
+            int retVal = lcmMenu();
             if(retVal==-1){
                 endscr();
                 break;

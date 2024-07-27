@@ -59,7 +59,7 @@ int* strToarr(char *str, int *returnlen){
 }
 
 void input(char *str, int len){
-    printf("\t\t\t");
+    printf("\t\t\t> ");
     fflush(stdin);
     fgets(str, len, stdin);
 }
@@ -68,40 +68,63 @@ int options(char *str){
     else if(selfcmp(str, "gcd")) return 1;
     else if(selfcmp(str, "lcm")) return 2;
     else if(selfcmp(str, "back")) return 3;
+    else if(str[0]==0x0A) return 4;
     else return -1;
 }
-int gcd(){
+int gcdcal_menu(){
     char buf[1024];
     while(1){
         gcdscr();
+        gcdcal();
+        input(buf, 1024);
+        if(options(buf)==0) return -1;
+        else if(options(buf)==4) return gcdcal_menu();
+        else if(options(buf)==3) break;
+        else inverr();
+    }
+}
+int gcdMenu(){
+    char buf[1024];
+    while(1){
+        gcdscr();
+        gcdopsscr();
         input(buf, 1024);
         if(options(buf)==0){
             return -1;
         }
         else if(options(buf)==2){
-            return lcm();
+            return lcmMenu();
         }
         else if(options(buf)==3){
             break;
+        }
+        else if(options(buf)==4){
+            int retval = gcdcal_menu();
+            if(retval==-1) break;
         }
         else{
             inverr();
         }
     }
 }
-int lcm(){
+int lcmMenu(){
     char buf[1024];
     while(1){
         lcmscr();
+        lcmopsscr();
         input(buf, 1024);
         if(options(buf)==0){
             return -1;
         }
         else if(options(buf)==1){
-            return gcd();
+            return gcdMenu();
         }
         else if(options(buf)==3){
             break;
+        }
+        else if(options(buf)==4){
+            printf("enter pressed\n");
+            sleep(1);
         }
         else{
             inverr();
