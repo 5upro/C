@@ -4,7 +4,7 @@
 
 void wlcmscr(){
     cls();
-    char buf[50] ="Welcome to The GDC/LCM Calculator!";
+    char buf[50] ="Welcome to The GCD/LCM Calculator!";
     printf("\n\n\t\t");
     for (int i=0; buf[i]!='\0'; i++){
         printf("%c", buf[i]);
@@ -39,10 +39,10 @@ void gcdscr(){
 }
 
 void gcdopsscr(){
-    printf("\t\t\t01. LCM\n\t\t\t02. BACK\n\t\t\t03. EXIT\n");
+    printf("\t\t\t01. LCM\n\t\t\t02. BACK\n\t\t\t03. EXIT\n\t\t\tPRESS ENTER TO START CALCULATION\n");
 }
 
-void gcdcal(){
+void calMenu_txt(){
     printf("\t\t\tEnter The Operands Separated by Spaces.\n");
 }
 
@@ -58,11 +58,16 @@ void lcmscr(){
 }
 
 void lcmopsscr(){
-    printf("\t\t\t01. GCD\n\t\t\t02. BACK\n\t\t\t03. EXIT\n");
+    printf("\t\t\t01. GCD\n\t\t\t02. BACK\n\t\t\t03. EXIT\n\t\t\tPRESS ENTER TO START CALCULATION\n");
 }
 
 void inverr(){
     printf("\n\t\t\t\t\t\033[1;91mINVALID INPUT!\033[0m");
+    sleep(1);
+}
+
+void inverr1(){
+    printf("\n\t\t\t\033[1;91mCAN NOT OPERATE WITH LESS THAN 2 OPERANDS!\033[0m");
     sleep(1);
 }
 
@@ -71,4 +76,5 @@ void endscr(){
     sleep(1);
     cls();
 }
+
 #endif
