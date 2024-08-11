@@ -100,7 +100,6 @@ int* strToarr(char *str, int len){
 
 void input(char *str, int len){
     printf("\t\t\t> ");
-    fflush(stdin);
     fgets(str, len, stdin);
 }
 
