@@ -2,6 +2,7 @@
 #define __GDC_UI_
 #define cls() system("cls")
 
+//welcome screen text
 void wlcmscr(){
     cls();
     char buf[50] ="Welcome to The GCD/LCM Calculator!";
@@ -11,9 +12,8 @@ void wlcmscr(){
         fflush(stdout);
         usleep(200000);
     }
-    
 }
-
+//front & option menu screen text
 void fscr(){
     cls();
     puts("\n\t\x1b[38;5;45m ________  ________  _________  ___  ________  ________   ________       \x1b[0m");
@@ -26,7 +26,7 @@ void fscr(){
     puts("\t                                                            \x1b[38;5;245m\\|_________| \x1b[0m");
     printf("\t\t\t01. GCD\n\t\t\t02. LCM\n\t\t\t03. EXIT\n");
 }
-
+//gcd header screen text
 void gcdscr(){
     cls();
     puts("\n\t\t\x1b[38;5;45m    ________      ________      ________         \x1b[0m");
@@ -37,7 +37,7 @@ void gcdscr(){
     puts("\t\t\x1b[38;5;245m      \\ \x1b[38;5;45m\\_______\\\\__\\ \\_______\\\\__\\ \\_______\\\\__\\\x1b[0m");
     puts("\t\t\x1b[38;5;245m       \\|_______\\|__|\\|_______\\|__|\\|_______\\|__|\x1b[0m\n");
 }
-
+//gcd option screen text
 void gcdopsscr(){
     printf("\t\t\t01. LCM\n\t\t\t02. BACK\n\t\t\t03. EXIT\n\t\t\tPRESS ENTER TO START CALCULATION\n");
 }
