@@ -1,27 +1,33 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "unistd.h"
-#include "tttprocess.h"
-#include "tttgui.h"
+#include "gui.h"
+#include "process.h"
 
 int main(){
     //wlcmscr();
+    cls();
     while(1){
-        cls();
         frntscr();
-        char buf[50];
+        char buf[10];
         fflush(stdout);
-        gets(buf);
+        scanf(" %s", buf);
         if(selfcmp(buf, "play")){
-            cls();
-            game();
-            puts("> ");
-            fflush(stdout);
-            gets(buf);
+            int8 retval = game();
+            if(retval==0){
+                endscr();
+                break;
+            }
+            else if(retval==1){
+                cls();
+            }
         }
-        else if(selfcmp(buf, "")) {
+        else if(selfcmp(buf, "exit")) {
             endscr();
             break;
+        }
+        else{
+            errtxt();
         }
     }
     return 0;
