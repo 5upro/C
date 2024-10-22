@@ -1,17 +1,21 @@
 #ifndef __TICTACTOE_GUI_
 #define __TICTACTOE_GUI_
 
-#define cls() system("cls")
+#ifdef __unix__
+    #define cls() system("clear")
+#elif defined (_WIN32) || defined (WIN32)
+    #define cls() system("cls")
+#endif
 #define endl "\n"
 
 void wlcmscr(){
     cls();
     char buf[50] ="Welcome to The Tic Tac Toe Player!";
-    printf("\n\n\t\t");
+    printf("\n\n\n\n\n\n\n\n\t   ");
     for (int i=0; buf[i]!='\0'; i++){
         printf("%c", buf[i]);
         fflush(stdout);
-        usleep(200000);
+        usleep(100000);
     }
 }
 void frntscr(){

@@ -27,7 +27,8 @@ int8 boardlogic(int8 *board, int8 *barr, int8 turn, char val){
                 board[0] = turn;
                 barr[0] += turn;
                 barr[3] += turn;
-                barr[6] += turn; 
+                barr[6] += turn;
+                return 1;
             }
             else return 0;
             break;
@@ -36,6 +37,7 @@ int8 boardlogic(int8 *board, int8 *barr, int8 turn, char val){
                 board[1] = turn;
                 barr[1] += turn; 
                 barr[3] += turn;
+                return 1;
             }
             else return 0;
             break;
@@ -44,7 +46,8 @@ int8 boardlogic(int8 *board, int8 *barr, int8 turn, char val){
                 board[2] = turn;
                 barr[2] += turn; 
                 barr[3] += turn; 
-                barr[7] += turn; 
+                barr[7] += turn;
+                return 1; 
             } 
             else return 0;
             break;
@@ -53,6 +56,7 @@ int8 boardlogic(int8 *board, int8 *barr, int8 turn, char val){
                 board[3] = turn;
                 barr[0] += turn;
                 barr[4] += turn;
+                return 1;
             }
             else return 0;
             break;
@@ -63,6 +67,7 @@ int8 boardlogic(int8 *board, int8 *barr, int8 turn, char val){
                 barr[1] += turn;
                 barr[6] += turn; 
                 barr[7] += turn;
+                return 1;
             }
             else return 0;
             break;
@@ -71,6 +76,7 @@ int8 boardlogic(int8 *board, int8 *barr, int8 turn, char val){
                 board[5] = turn;
                 barr[2] += turn;
                 barr[4] += turn;
+                return 1;
             }
             else return 0;
             break;
@@ -79,7 +85,8 @@ int8 boardlogic(int8 *board, int8 *barr, int8 turn, char val){
                 board[6] = turn;
                 barr[0] += turn;
                 barr[5] += turn;
-                barr[7] += turn; 
+                barr[7] += turn;
+                return 1; 
             }
             else return 0;
             break;
@@ -88,6 +95,7 @@ int8 boardlogic(int8 *board, int8 *barr, int8 turn, char val){
                 board[7] = turn;
                 barr[1] += turn;
                 barr[5] += turn;
+                return 1;
             }
             else return 0;
             break;
@@ -96,7 +104,8 @@ int8 boardlogic(int8 *board, int8 *barr, int8 turn, char val){
                 board[8] = turn;
                 barr[2] += turn;
                 barr[5] += turn;
-                barr[6] += turn; 
+                barr[6] += turn;
+                return 1; 
             }
             else return 0;
             break;
@@ -124,7 +133,6 @@ int8 strc(char *basestr, int16 len0, char *cpystr, int16 len1){
 
 void boardprint(char *strmat){
     char temp[28];
-    puts("");
     for(int8 i=0; i<11; i++){
         strc(strmat+(i*28), 28, temp, 28);
         printf("\t ");
@@ -132,11 +140,12 @@ void boardprint(char *strmat){
     }
 }
 
+void invalupdate(char *ptr, char c){
+    if(*ptr==' ') *ptr = c;
+}
+
 void updateboard(char *strmat, int8 x, char val){
     char c = (x==X) ? 'X' : 'O';
-    void invalupdate(char *ptr, char vc){
-        if(*ptr==' ') *ptr = vc;
-    }
     switch(val){
         case 'q':
             invalupdate((strmat+61), c);
@@ -177,7 +186,7 @@ void finres(int8 x){
     else printf("\n\t\t  %c WON!\n", x==1 ? 'X' : 'O');
 }
 
-int8 rnd(){
+void rnd(){
     int8 pturn=1, cst=0, bste[8] = {0};
     int8 board[3][3] ={
         {_, _, _},
@@ -201,8 +210,6 @@ int8 rnd(){
     boardprint((char*)boardf);
     
     for(int8 i=0; i<9; i++){
-        //for(int il=0; il<8; il++)
-        //printf("%d ", i);
         if(cst==1||cst==-1) break;
         printf("\n\t\t %c\'s Move: ", pturn==1 ? 'X' : 'O');
         char v;
@@ -232,7 +239,7 @@ int8 game(){
         rnd();
         char buf[10];
         printf("\t\t  > ");
-        fflush(stdin);
+        scanf("%c", buf);
         fgets(buf, 10, stdin);
         if(selfcmp(buf,"exit")){
             rval = 0;
@@ -242,13 +249,8 @@ int8 game(){
             rval = 1;
             break;
         }
-        else if(buf[0] == 0x0A){
-            continue;
-        }
-        else{
-            errtxt();
-            cls();
-        }
+        else if(buf[0] == 0x0A) continue;
+        else errtxt();
     }
     return rval;
 }
